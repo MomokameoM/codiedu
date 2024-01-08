@@ -1,0 +1,147 @@
+﻿{{#if user.permisos}}
+    <div class="container">
+        <div class="row pt-5">
+            <section class="col-8">
+                <section class="card card-titlesb">
+                    <div class="row">
+                        <section class="col-12 col-md-9">
+                            <div class="card-body px-4">
+                                <h3 class="card-title">Cursos</h3>
+                                <p class="card-text">Siempre puedes crear un curso nuevo para los estudiantes o mejorar un curso existente.</p>
+                            </div>
+                        </section>
+                        <section class="col-3 d-none d-sm-block">
+                            <img class="img-fluid" src="/img/curso.png" alt="Cursos" title="Cursos">
+                        </section>
+                    </div>
+                </section>
+            </section>
+            <section class="col-4 col-md-2">
+                <section class="card" style="background-color: #6F88FC; color:white;">
+                    <div class="card-body text-center">
+                        <p>Agregar nuevo curso</p>
+                        <a class="link-btn" href="/cursos/add"><button class="btn-icon">+</button></a>
+                    </div>
+                </section>
+            </section>
+            <section class="col-2 d-none d-sm-block">
+                <section class="card" style="background-color: #FF7582; color:white;">
+                    <div class="card-body text-center">
+                        <script type="text/javascript">
+                            var d = new Date();
+                            document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                        </script>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    <!--Lista-->
+                <div class="container p-4">
+        <div class="row">
+            {{#each cursos}}
+                <div class="col-xs-6 col-md-4 col-sm-4 p-2">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <h3 class="card-title text-uppercase" >
+                                {{title}}
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <b>Descripción:</b>
+                            <p class="m-2">{{description}}</p>
+                            <b>Creado hace:</b>
+                            <p>{{timeago createdat}}</p>
+                            <b>Clave de acceso:</b>
+                            <p>{{token}}</p>
+                            <a href="/cursos/edit2/{{id}}"><button class="btn_blue">Editar actividades</button></a>
+                            <a href="/edu/{{id}}"><button class="btn_blue">Editar contenido</button></a>
+                            <a href="/cursos/add2/{{id}}"><button class="btn_blue">Añadir Actividad</button></a>
+                            <a href="/edu/add/{{id}}"><button class="btn_blue">Añadir Contenido</button></a>
+                            <a href="/estudiantes/{{id}}"><button class="btn_blue">Alumnos inscritos</button></a>
+                            <a href="/cursos/delete/{{id}}"><button class="btn-red">Borrar curso</button></a>
+                            <a href="/cursos/edit/{{id}}"><button class="btn_blue">Editar curso</button></a>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                <div class="col-md-4 mx-auto">
+                    <div class="card card-body text-center">
+                        <p>¿Quieres crear un curso?</p>
+                        <a href="/cursos/add">
+                            <button>
+                                ¡Crealo!
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+{{else}}
+    <div class="container">
+        <div class="row pt-5">
+            <section class="col-8">
+                <section class="card card-titles">
+                    <div class="row">
+                        <section class="col-9">
+                            <div class="card-body px-4">
+                                <h3 class="card-title">Cursos</h3>
+                                <p class="card-text">Disfruta de todos los cursos que los prfosores traen para ti</p>
+                            </div>
+                        </section>
+                        <section class="col-3">
+                            <img class="img-fluid" src="/img/curso.png" alt="Cursos" title="Cursos">
+                        </section>
+                    </div>
+                </section>
+            </section>
+            <section class="col-2">
+                <section class="card" style="background-color: #6F88FC; color:white;">
+                    <div class="card-body text-center">
+                        <p>Aprende mucho</p>
+                    </div>
+                </section>
+            </section>
+            <section class="col-2">
+                <section class="card" style="background-color: #FF7582; color:white;">
+                    <div class="card-body text-center">
+                        <script type="text/javascript">
+                            var d = new Date();
+                            document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                        </script>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    <!--Lista-->
+    <div class="container p-4">
+        <div class="row" style="margin-bottom: 20vh">
+            {{#each cursos}}
+                <div class="col-xs-6 col-md-6 col-sm-12 p-2" >
+                    <div class="card text-center" style="border: 0;height: 100%">
+                        <div class="card-header" style="background-color: #59989E;color: white;">
+                            <h3 class="card-title text-uppercase" >
+                                {{title}}
+                            </h3>
+                        </div>
+                        <div class="card-body" style="background-color: rgba(89,152,158,0.45);height: auto;">
+                            <p class="m-2">{{description}}</p>
+                            <p>{{timeago createdat}}</p>
+                            <a href="/cursosC/viewR/{{id}}" class="btn btn-secondary" id="btn_blue">Realizar actividad.</a>
+                        </div>
+                    </div>
+                </div>
+
+            {{else}}
+                <div class="col-md-4 mx-auto">
+                    <div class="card card-body text-center">
+                        <p>¿Quieres agregar nuevo contenido educativo?</p>
+                        <p>¡Consúltalo con tus docentes!</p>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+{{/if}}

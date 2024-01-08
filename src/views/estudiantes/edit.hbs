@@ -1,0 +1,314 @@
+﻿{{#if user.permisosAdmin}}
+    <div class="container p-4" style= "width: available; margin-bottom: 20vh">
+        <div class="row">
+    <div class="row pt-5">
+        <section class="col-2">
+            <section class="card" style="background-color: #FF7582; color:white;">
+                <div class="card-body text-center">
+                    <p>Volver</p>
+                            <a class="link-btn" href="javascript:history.back()"><button class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                            </svg></button></a>
+                </div>
+            </section>
+        </section>
+        <section class="col-8">
+            <section class="card card-titles">
+                        <div class="card-body px-4">
+                            <h3 class="card-title">Estudiantes</h3>
+                        </div>
+            </section>
+        </section>
+        <section class="col-2">
+            <section class="card" style="background-color: #6F88FC; color:white;">
+                <div class="card-body text-center">
+                    <script type="text/javascript">
+                        var d = new Date();
+                        document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                    </script>
+                </div>
+            </section>
+        </section>
+    </div>
+            <div class="col-md-4 mx-auto" style="text-align: center">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/estudiantes/edit/{{estudiantes.id}}" method="post" style="text-align: center;">
+                            <div class="form-group">
+                                <h4>Username:</h4>
+                                <input type="text" value="{{estudiantes.username}}" class="form-control" name="username" placeholder="Username" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <h4>Nombre completo:</h4>
+                                <input type="text" value="{{estudiantes.fullname}}" class="form-control" name="fullname" placeholder="Nombre completo" >
+                            </div>
+                            <div class="form-group">
+                                <h4>Correo:</h4>
+                                <input type="text" value="{{estudiantes.email}}" class="form-control" name="email" placeholder="Correo electronico" >
+                            </div>
+                            <div class="form-group">
+                                <h4>Permisos:</h4>
+                                <label>
+                                    <select name="permisosList">
+                                        <option>Estudiante.</option>
+                                        <option>Docente.</option>
+                                        <option>Administrador.</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="form-group" style="text-align: center; height: fit-content;">
+                                <h4>Enlace de imagen de perfil:</h4>
+                                <input type="url" class="form-control" id="url" value="{{estudiantes.imagen}}" name="imagen" placeholder="URL" onchange="document.getElementById('blah').src = document.getElementById('url').value">
+                                <div style="width: 100%;height:fit-content; padding: 10px">
+                                    <img id="blah" alt="Tu imagen de perfil" width="100%" src="{{estudiantes.imagen}}"/>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group" style="text-align: center">
+                                <h4>Rimas:</h4>
+                                <table border="1">
+                                <tbody>
+                                <tr>
+                                    <th>ID.</th>
+                                    <th>Estudiante.</th>
+                                    <th>Actividad.</th>
+                                    <th>Puntaje.</th>
+                                    <th>Intentos.</th>
+                                </tr>
+                                    {{#each joinR}}
+                                    <tr>
+                                        <th>{{id}}</th>
+                                        <td>{{fullname}}</td>
+                                        <td>{{title}}</td>
+                                        <td>{{score_rimas}}/3</td>
+                                        <td>{{intentos}}</td>
+                                    </tr>
+                                    {{else}}
+                                    <tr>
+                                        <th colspan="5">Ninguna actividad.</th>
+                                    </tr>
+                                    </tbody>
+                                    {{/each}}
+                                </table>
+                            </div>
+                            <br>
+                            <div class="form-group" style="text-align: center">
+                                <h4>Oraciones:</h4>
+                                <table border="1">
+                                <tbody>
+                                <tr>
+                                    <th>ID.</th>
+                                    <th>Estudiante.</th>
+                                    <th>Actividad.</th>
+                                    <th>Puntaje.</th>
+                                    <th>Intentos.</th>
+                                </tr>
+                                    {{#each joinO}}
+                                    <tr>
+                                        <th>{{id}}</th>
+                                        <td>{{fullname}}</td>
+                                        <td>{{title}}</td>
+                                        <td>{{score_oraciones}}/3</td>
+                                        <td>{{intentos}}</td>
+                                    </tr>
+                                    {{else}}
+                                    <tr>
+                                        <th colspan="5">Ninguna actividad.</th>
+                                    </tr>
+                                    </tbody>
+                                    {{/each}}
+                                </table>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button class="btn btn-success btn-block" id="form_btn">
+                                    Editar estudiante.
+                                </button>
+                            </div>
+                        </form>
+                        <a href="/docentes/delete/{{docentes.id}}" class="btn btn-danger">Borrar estudiante.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{else}}
+    {{#if user.permisos}}
+        <div class="container p-4" style= "width: available; margin-bottom: 20vh">
+    <div class="row py-3">
+        <section class="col-4 col-md-2">
+            <section class="card" style="background-color: #FF7582; color:white;">
+                <div class="card-body text-center">
+                    <p>Volver</p>
+                            <a class="link-btn" href="javascript:history.back()"><button class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                            </svg></button></a>
+                </div>
+            </section>
+        </section>
+        <section class="col-8">
+            <section class="card card-titles">
+                        <div class="card-body px-4">
+                            <h3 class="card-title">Datos personales</h3>
+                        </div>
+            </section>
+        </section>
+        <section class="col-2 d-none d-sm-block">
+            <section class="card" style="background-color: #6F88FC; color:white;">
+                <div class="card-body text-center">
+                    <script type="text/javascript">
+                        var d = new Date();
+                        document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                    </script>
+                </div>
+            </section>
+        </section>
+    </div>
+            <div class="row">
+                <div class="col-md-4 mx-auto py-2" style="text-align: center">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/estudiantes/edit/{{estudiantes.id}}" method="post" style="text-align: center;">
+                                <div class="form-group">
+                                    <h4><b>Nombre de usuario:</b><br>{{estudiantes.username}}</h4>
+                                </div>
+                                <div class="form-group">
+                                    <h4><b>Nombre completo:</b><br>{{estudiantes.fullname}}</h4>
+                                </div>
+                                <div class="form-group">
+                                    <h4><b>Correo:</b><br>{{estudiantes.email}}</h4>
+                                </div>
+                                <div class="form-group" style="display: none">
+                                    <input value="Estudiante" name="permisosList">
+                                </div>
+                                <div class="form-group" style="text-align: center; height: fit-content;">
+                                    <h4><b>Imagen de perfil:</b></h4>
+                                    <div style="width: 100%;height:fit-content; padding: 10px">
+                                        <img id="blah" alt="Tu imagen de perfil" width="100%" src="{{estudiantes.imagen}}"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mx-auto py-2" style="text-align: center">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Registro de actividades.</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group" style="text-align: center;">
+                                <h4><b>Rimas:</b></h4>
+                                <table border="1" style="width: 100%">
+                                <tbody>
+                                <tr>
+                                    <th>Estudiante.</th>
+                                    <th>Actividad.</th>
+                                    <th>Puntaje.</th>
+                                    <th>Intentos.</th>
+                                </tr>
+                                    {{#each joinR}}
+                                    <tr>
+                                        <td>{{fullname}}</td>
+                                        <td>{{title}}</td>
+                                        <td>{{score_rimas}}/3</td>
+                                        <td>{{intentos}}</td>
+                                    </tr>
+                                    {{else}}
+                                    <tr>
+                                        <th colspan="5">Ninguna actividad.</th>
+                                    </tr>
+                                    </tbody>
+                                    {{/each}}
+                                </table>
+                            </div>
+                            <br>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Oraciones:</b></h4>
+                                <table border="1" style="width: 100%;">
+                                <tbody>
+                                <tr>
+                                    <th>Estudiante.</th>
+                                    <th>Actividad.</th>
+                                    <th>Puntaje.</th>
+                                    <th>Intentos.</th>
+                                </tr>
+                                    {{#each joinO}}
+                                    <tr>
+                                        <td>{{fullname}}</td>
+                                        <td>{{title}}</td>
+                                        <td>{{score_oraciones}}/3</td>
+                                        <td>{{intentos}}</td>
+                                    </tr>
+                                    {{else}}
+                                    <tr>
+                                        <th colspan="5">Ninguna actividad.</th>
+                                    </tr>
+                                    </tbody>
+                                    {{/each}}
+                                </table>
+                            </div>
+                            <br>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Signos:</b></h4>
+                                <table border="1" style="width: 100%;">
+                                <tbody>
+                                <tr>
+                                    <th>Estudiante.</th>
+                                    <th>Actividad.</th>
+                                    <th>Puntaje.</th>
+                                    <th>Intentos.</th>
+                                </tr>
+                                    {{#each joinS}}
+                                    <tr>
+                                        <td>{{fullname}}</td>
+                                        <td>{{title}}</td>
+                                        <td>{{score_signos}}/3</td>
+                                        <td>{{intentos}}</td>
+                                    </tr>
+                                    {{else}}
+                                    <tr>
+                                        <th colspan="5">Ninguna actividad.</th>
+                                    </tr>
+                                    </tbody>
+                                    {{/each}}
+                                </table>
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Unir:</b></h4>
+                                <table border="1" style="width: 100%;">
+                                <tbody>
+                                <tr>
+                                    <th>Estudiante.</th>
+                                    <th>Actividad.</th>
+                                    <th>Puntaje.</th>
+                                    <th>Intentos.</th>
+                                </tr>
+                                    {{#each joinU}}
+                                    <tr>
+                                        <td>{{fullname}}</td>
+                                        <td>{{title}}</td>
+                                        <td>{{score_unir}}/3</td>
+                                        <td>{{intentos}}</td>
+                                    </tr>
+                                    {{else}}
+                                    <tr>
+                                        <th colspan="5">Ninguna actividad.</th>
+                                    </tr>
+                                    </tbody>
+                                    {{/each}}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div style="text-align: center">
+            <p>¡Tú no puedes acceder aquí!</p>
+        </div>
+    {{/if}}
+{{/if}}

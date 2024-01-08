@@ -1,0 +1,34 @@
+﻿<div class="container" style="width: 100%;height: 90vh; display: flex;align-items: center; justify-content: center;text-align: center;">
+        <div style="text-align: center; height: 100%; width: 100%;">
+            <div class="row p-3" style="width: 100%;">
+                <div class="col-12" style="margin-bottom: 0;padding-bottom: 0">
+                    <div class="card card-titles" ><h1 style="color: white">Enhorabuena!</h1></div>
+                </div>
+                <div class="col-12" style="height: 40vh;">
+            {{#if score3}}
+                    <img src="/img/retro3.svg" style="height: 100%">
+            {{/if}}
+                    {{#if score2}}
+                        <img src="/img/retro2.svg" style="height: 100%">
+                    {{/if}}
+                    {{#if score1}}
+                        <img src="/img/retro1.svg" style="height: 100%">
+                    {{/if}}
+                    {{#if score0}}
+                        <img src="/img/retro1.svg" style="height: 100%">
+                    {{/if}}
+                </div>
+                <div class="col-12" style="margin-bottom: 0;padding-bottom: 0">
+                    <h3>Sacaste {{score.score_oraciones}} de 3</h3>
+                </div>
+                <div class="col-6">
+                    <a href="javascript:history.back()"><img src="https://cdn0.iconfinder.com/data/icons/web-user-interface-7/130/17-512.png" style="width: 50%"></a>
+                    <h2>Repetir</h2>
+                </div>
+                <div class="col-6 p-2">
+                    <a  href="/cursos/liste"><img src="http://download.tomtom.com/open/manuals/Bridge/17.6/html/es-es/myvehiclenextarrow.png" style="width: 100%"></a>
+                    <h2>Continuar</h2>
+                </div>
+            </div>
+        </div>
+</div>

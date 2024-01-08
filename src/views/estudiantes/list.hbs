@@ -1,0 +1,137 @@
+﻿{{#if user.permisosAdmin}}
+    <div class="container">
+        <div class="row pt-5 mb-5">
+            <section class="col-4 col-md-2">
+                <section class="card" style="background-color: #FF7582; color:white;">
+                    <div class="card-body text-center">
+                        <p>Volver</p>
+                        <a class="link-btn" href="/cursos/"><button class="btn-icon"></button></a>
+                    </div>
+                </section>
+            </section>
+            <section class="col-8">
+                <section class="card card-titlesb">
+                            <div class="card-body px-4">
+                                <h3 class="card-title" align="CENTER">Estudiantes</h3>
+                                <p class="card-text">¡En esta sección puede supervisar el progreso de los alumnos y supervisarlos, haga clic sobre uno para revisarlo!</p>
+                            </div>
+                        </section>
+                </section>
+            <section class="col-2 d-none d-sm-block">
+                <section class="card" style="background-color: #6F88FC; color:white;">
+                    <div class="card-body text-center">
+                        <script type="text/javascript">
+                            var d = new Date();
+                            document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                        </script>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    <!--Lista-->
+    <div class="container p-4">
+        <div class="row" style="margin-bottom: 20vh">
+            {{#each estudiantes}}
+                <div class="col-xs-3 col-md-3 col-sm-6 p-2" >
+                    <a href="/estudiantes/edit/{{users_id}}" style="text-decoration: none; color: black">
+                        <div class="card text-center" style="border: 0;height: 100%">
+                            <div class="card-header" style="background-color: #59989E;color: white;">
+                                <h3 class="card-title text-uppercase" >
+                                    {{username}}
+                                </h3>
+                            </div>
+                            <div class="card-body" style="background-color: rgba(89,152,158,0.45);height: fit-content;">
+                                <img src="{{imagen}}" style="height: 10vh;">
+                                <p class="m-2">{{fullname}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            {{else}}
+                <div class="col-md-4 mx-auto">
+                    <div class="card card-body text-center">
+                        <p>¿Quieres agregar nuevos estudiantes?</p>
+                        <p>¡Invítalos!</p>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+{{else}}
+    {{#if user.permisos}}
+    <div class="container">
+        <div class="row pt-5 mb-3">
+            <section class="col-4 col-md-2">
+                <section class="card" style="background-color: #FF7582; color:white;">
+                    <div class="card-body text-center">
+                        <p>Volver</p>
+                        <a class="link-btn" href="/cursos/"><button class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg></button></a>
+                    </div>
+                </section>
+            </section>
+            <section class="col-8">
+                <section class="card card-titlesb">
+                            <div class="card-body px-4">
+                                <h3 class="card-title" align="CENTER">Estudiantes</h3>
+                                <p class="card-text">¡En esta sección puede supervisar el progreso de los alumnos, haga clic sobre uno para revisarlo!</p>
+                            </div>
+                        </section>
+                </section>
+            <section class="col-2 d-none d-sm-block">
+                <section class="card" style="background-color: #6F88FC; color:white;">
+                    <div class="card-body text-center">
+                        <script type="text/javascript">
+                            var d = new Date();
+                            document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                        </script>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+        <!--Lista-->
+        <div class="container p-4">
+            <div class="row" style="margin-bottom: 20vh">
+                {{#each estudiantes}}
+                    <div class="col-xs-3 col-md-3 col-sm-6 p-2" >
+                        <a href="/estudiantes/edit/{{users_id}}/{{id}}">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <h3 class="card-title text-uppercase" >
+                                        {{username}}
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <img src="{{imagen}}" style="width: 100%;">
+                                    <b>Nombre completo:</b>
+                                    <p class="m-0">{{fullname}}</p>
+                                    <a href="/estudiantes/eject/{{users_id}}/{{id}}"><button class="btn-red" style="width: 100%; height: 4vh">Expulsar del curso</button></a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                {{else}}
+                    <div class="col-md-4 mx-auto">
+                        <div class="card card-body text-center">
+                            <p>¿Quieres agregar nuevos estudiantes?</p>
+                            <p>¡Invítalos con tu código de curso!</p>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    {{else}}
+        <div class="jumbotron" style="margin-bottom: 0">
+            <h2 class="text-center titles"><b>Estudiantes.</b></h2>
+            <p class="text-center lead">
+                ¡Tú no puedes ver esta sección!
+            </p>
+        </div>
+    {{/if}}
+{{/if}}

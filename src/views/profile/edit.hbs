@@ -1,0 +1,67 @@
+﻿<div class="container p-4">
+    <div class="row pt-5 mb-5">
+        <section class="col-4 col-md-2" >
+            <section class="card" style="background-color: #FF7582; color:white;">
+                <div class="card-body text-center">
+                    <p>Volver</p>
+                            <a class="link-btn" href="javascript:history.back()"><button class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg></button></a>
+                </div>
+            </section>
+        </section>
+        <section class="col-8 col-md-8">
+            <section class="card card-titles">
+                        <div class="card-body px-4">
+                            <h3 class="card-title" align="CENTER">Editar perfil.</h3>
+                        </div>
+                    </section>
+            </section>
+        </section>
+        <section class=" d-none d-sm-block  col-md-2">
+            <section class="card" style="background-color: #6F88FC; color:white;">
+                <div class="card-body text-center">
+                    <script type="text/javascript">
+                        var d = new Date();
+                        document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                    </script>
+                </div>
+            </section>
+        </section>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/profile/edit/{{users.id}}" method="post">
+                        <div class="form-group" style="text-align: center">
+                            <h5><b>Nombre de usuario:</b></h5>
+                            <input type="text" value="{{users.username}}" class="form-control" name="username" placeholder="Nombre de usuario" autofocus  style="border-radius:40px;">
+                        </div>
+                        <div class="form-group" style="text-align: center">
+                            <h5><b>Nombre completo:</b></h5>
+                            <input type="text" value="{{users.fullname}}" class="form-control" name="fullname" placeholder="Nobre completo"  style="border-radius:40px;">
+                        </div>
+                        <div class="form-group" style="text-align: center">
+                            <h5><b>Correo:</b></h5>
+                            <input type="email" value="{{users.email}}" class="form-control" name="email" placeholder="Correo electronico"  style="border-radius:40px;">
+                        </div>
+                        <div class="form-group" style="text-align: center">
+                            <h5><b>Link de imagen de perfil:</b></h5>
+                            <input type="url" class="form-control" id="url" value="{{users.imagen}}" name="imagen" placeholder="URL" onchange="document.getElementById('blah').src = document.getElementById('url').value"  style="border-radius:40px;">
+                            <div style="width: 100%;height:fit-content; padding: 10px">
+                                <img id="blah" alt="Tu imagen de perfil" width="100%" src="{{users.imagen}}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block" id="form_btn">
+                                Actualizar.
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

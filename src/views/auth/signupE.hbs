@@ -1,0 +1,45 @@
+﻿<section class="full-reset font-cover" style="background-image: url(/img/font-index8.png);height: fit-content;">
+            <div class="row" style="height: 100%">
+                <div class="col-11 col-lg-3 col-sm-6 mx-auto py-5" style="height: fit-content;width: 100%;">
+                    <form class="p-5 form-loginb" style="width: 100%;left: 0;top: 0;position: relative" action="/signupE" method="post">
+                        <h3 class="text-center pb-3">Registrarse</h3>
+                        <div class="form-group">
+                            <input type="text" name="fullname" placeholder="Nombre completo" class="form-control" autofocus style="border-radius:40px;">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="username" placeholder="Nombre de usuario" class="form-control" required style="border-radius:40px;">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Correo electronico" class="form-control" style="border-radius:40px;">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Contraseña" required style="border-radius:40px;">
+                        </div>
+                        <div class="form-group pb-3 text-center" >
+                            <label><input type="checkbox" name="cbox">    <a href="/terminos" style="text-decoration: none">Términos y condiciones.</a></label>
+                            <label><input type="checkbox" name="cbox2">    <a href="/politicas" style="text-decoration: none">Políticas de privacidad.</a></label>
+                        </div>
+                        <div class="form-group" style=" text-align: center;">
+                            <div class="center">
+                                <canvas style="width: 100%; background-color: rgba(110,99,99,0.22); border-radius: 5px;" id="captcha">captcha text</canvas>
+                                <input id="textBox" type="text" name="text">
+                                <div id="buttons" style="padding-top: 10px">
+                                    <input id="submitButton" type="button" value="Checar">
+                                    <button id="refreshButton" type="button">Actualizar</button><br>
+                                    <label style="display: none;"><input type="checkbox" id="cbox3" name="cbox3"></label>
+                                </div>
+                                <img src="" id="imgcbox" style="height: 50px"><br>
+                                <span id="output"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block" id="btn_blue">
+                                Registrarse
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+<script src="/js/script.js"></script>

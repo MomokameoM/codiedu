@@ -1,0 +1,122 @@
+﻿{{#if user.permisosAdmin}}
+    {{#if estudiantes}}
+        <!-- ---------------ESTUDIANTE---------- -->
+        <div class="container">
+            <div class="row pt-5 mb-3">
+                <section class="col-12 col-md-10">
+                    <section class="card card-titles">
+                        <div class="card-body px-4">
+                            <h3 class="card-title" align="CENTER">¡En esta sección puede supervisar a los estudiantes!</h3>
+                        </div>
+                    </section>
+                </section>
+                <section class="col-2 d-none d-sm-block">
+                    <section class="card" style="background-color: #FF7582; color:white;">
+                        <div class="card-body text-center">
+                            <script type="text/javascript">
+                                var d = new Date();
+                                document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                            </script>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <!--Lista-->
+        <div class="container p-4">
+            <div class="row" style="margin-bottom: 20vh">
+                {{#each estudiantes}}
+                    <div class="col-xs-3 col-md-3 col-sm-6 p-2" >
+                        <a href="/docentes/edit/{{id}}">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <h3 class="card-title text-uppercase" >
+                                        {{username}}
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <img src="{{imagen}}" style="height: 10vh;">
+                                    <p class="m-2">{{fullname}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {{else}}
+                    <div class="col-md-4 mx-auto">
+                        <div class="card card-body text-center">
+                            <p>¿Quieres agregar nuevos alumnos?</p>
+                            <p>¡Invitalos a registrarse!</p>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    {{else}}
+        <!-- ---------------ESTUDIANTE---------- -->
+        <div class="container">
+            <div class="row pt-5 mb-3">
+                <section class="col-8">
+                    <section class="card card-titles">
+                        <div class="card-body px-4">
+                            <h3 class="card-title" align="CENTER">¡En esta sección puede supervisar a los docentes!</h3>
+                        </div>
+                    </section>
+                </section>
+                <section class="col-4 col-md-2">
+                    <section class="card" style="background-color: #6F88FC; color:white;">
+                        <div class="card-body text-center">
+                            <p>Agregar Docente</p>
+                            <a class="link-btn" href="/docentes/add"><button class="btn-icon">+</button></a>
+                        </div>
+                    </section>
+                </section>
+                <section class="col-2 d-none d-sm-block">
+                    <section class="card" style="background-color: #FF7582; color:white;">
+                        <div class="card-body text-center">
+                            <script type="text/javascript">
+                                var d = new Date();
+                                document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                            </script>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <!--Lista-->
+        <div class="container p-4">
+            <div class="row" style="margin-bottom: 20vh">
+                {{#each docentes}}
+                    <div class="col-xs-3 col-md-3 col-sm-6 p-2" >
+                        <a href="/docentes/edit/{{id}}">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <h3 class="card-title text-uppercase" >
+                                        {{username}}
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <img src="{{imagen}}" style="height: 10vh;">
+                                    <p class="m-2">{{fullname}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {{else}}
+                    <div class="col-md-4 mx-auto">
+                        <div class="card card-body text-center">
+                            <p>¿Quieres agregar nuevos Docentes?</p>
+                            <p>¡Agrégalos!</p>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    {{/if}}
+{{else}}
+    <div class="jumbotron" style="margin-bottom: 0">
+        <h2 class="text-center titles"><b>Docentes.</b></h2>
+        <p class="text-center lead">
+            ¡Tú no puedes ver esta sección!
+        </p>
+    </div>
+{{/if}}

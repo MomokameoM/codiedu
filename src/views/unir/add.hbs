@@ -1,0 +1,117 @@
+﻿{{#if user.permisos}}
+    <div class="container p-4">
+            <div class="row pt-5 mb-2">
+                <section class="col-4 col-md-2">
+                    <section class="card" style="background-color: #FF7582; color:white;">
+                        <div class="card-body text-center">
+                            <p>Volver</p>
+                            <a class="link-btn" href="javascript:history.back()"><button class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg></button></a>
+                        </div>
+                    </section>
+                </section>
+                <section class="col-8">
+                    <section class="card card-titles">
+                                <div class="card-body px-4">
+                                    <h3 class="card-title" align="CENTER">Crear Act. Unir.</h3>
+                                </div>
+                    </section>
+                </section>
+                <section class="col-2 d-none d-sm-block">
+                    <section class="card">
+                        <div class="card-body text-center">
+                            <script type="text/javascript">
+                                var d = new Date();
+                                document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                            </script>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        <section class="col-12 mx-auto mb-2">
+            <section class="card card-titles" style="background-color: white" >
+                <div class="card-body px-4" style="background-color: white">
+                    <h3 class="card-title" style="background-color: white; color: #2469A0; font-size: 2vh" align="CENTER">En esta actividad se fomentara el aprendizaje a traves de relacionar imagenes, debes proporcionar 
+                        el enlace de la imagen que quiere usar (Creative Commons unicamente) y las respuestas de las misma.</h3>
+                </div>
+            </section>
+        </section>
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/unir/add/{{id}}" method="post">
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Título.</b></h4>
+                                <input type="text" class="form-control" name="title" placeholder="Titulo del apoyo" autofocus>
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Descripción:</b></h4>
+                                <textarea name="description" rows="2" class="form-control" placeholder="Describa la atividad."></textarea>
+                            </div>
+                            <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh;border-color: #6F88FC "></div>
+                            <div class="form-group" style="text-align: center">
+                                <h5><b>Link de imagen a unir 1:</b></h5>
+                                <input type="url" class="form-control" id="url" name="imagen1" placeholder="URL" onchange="document.getElementById('blah1').src = document.getElementById('url').value">
+                                <div style="width: 100%;height:fit-content; padding: 10px">
+                                    <img id="blah1" alt="Tu imagen 1" width="100%" src="{{users.imagen}}"/>
+                                </div>
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Palabra 1:</b></h4>
+                                <input name="palabra1" class="form-control" placeholder="Frase o palabra a unir">
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Palabra incorrecta 1:</b></h4>
+                                <input name="incorrect1" class="form-control" placeholder="Frase o palabra incorrecta">
+                            </div>
+                            <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh;border-color: #6F88FC "></div>
+                            <div class="form-group" style="text-align: center">
+                                <h5><b>Link de imagen a unir 2:</b></h5>
+                                <input type="url" class="form-control" id="url2" name="imagen2" placeholder="URL" onchange="document.getElementById('blah2').src = document.getElementById('url2').value">
+                                <div style="width: 100%;height:fit-content; padding: 10px">
+                                    <img id="blah2" alt="Tu imagen 2" width="100%" src="{{users.imagen}}"/>
+                                </div>
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Palabra 2:</b></h4>
+                                <input name="palabra2" class="form-control" placeholder="Frase o palabra a unir">
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Palabra incorrecta 2:</b></h4>
+                                <input name="incorrect2" class="form-control" placeholder="Frase o palabra incorrecta">
+                            </div>
+                            <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh;border-color: #6F88FC "></div>
+                            <div class="form-group" style="text-align: center">
+                                <h5><b>Link de imagen a unir 3:</b></h5>
+                                <input type="url" class="form-control" id="url3" name="imagen3" placeholder="URL" onchange="document.getElementById('blah3').src = document.getElementById('url3').value">
+                                <div style="width: 100%;height:fit-content; padding: 10px">
+                                    <img id="blah3" alt="Tu imagen 3" width="100%"/>
+                                </div>
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Palabra 3:</b></h4>
+                                <input name="palabra3" class="form-control" placeholder="Frase o palabra a unir">
+                            </div>
+                            <div class="form-group" style="text-align: center">
+                                <h4><b>Palabra incorrecta 3:</b></h4>
+                                <input name="incorrect3" class="form-control" placeholder="Frase o palabra incorrecta">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success btn-block" id="form_btn">
+                                    Añadir.
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{else}}
+    <div style="text-align: center">
+        <p>¡Tú no puedes acceder aquí!</p>
+    </div>
+{{/if}}

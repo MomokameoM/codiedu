@@ -1,0 +1,61 @@
+﻿{{#if pass}}
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="card text-center" style="border: 0; height: 100%;">
+                    <div class="card-body">
+                        <form action="/forgot/{{pass.id}}" method="post">
+                            <h3 class="text-center pb-3">Restablecer contraseña.</h3>
+                            <div class="form-group">
+                                <h5>Foto de perfil:</h5>
+                                <img src="{{pass.imagen}}" class="card-img-top mx-auto m-2 rounded-square w-10">
+                            </div>
+                            <div class="form-group">
+                                <h5>Nueva contraseña:</h5>
+                                <input type="text" class="form-control" name="password" placeholder="Nueva contraseña" >
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <button class="btn btn-success btn-block" id="form_btn">
+                                    Actualizar.
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{else}}
+    <section class="full-reset fonts-cover py-5" style="background-image: url(/img/font-index8.png);height: 80vh;">
+        <div class="container container-login py-5">
+            <section>
+                <form class="p-5 form-login d-none d-lg-block d-xl-block" action="/send-email" method="post" style="top: 80px">
+                    <h3 class="text-center pb-3">Restablecer contraseña.</h3>
+                    <p>Escriba el correo con el que registro su cuenta para que le sea enviado un link de recuperación del mismo.</p>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Correo electronico" class="form-control">
+                    </div>
+                    <button class="btn btn-success btn-block" id="btn_blue" >
+                        Enviar correo.
+                    </button>
+                </form>
+            </section>
+            <section>
+                <form class="p-5 form-loginbb d-block d-lg-none d-xl-none" action="/send-email" method="post" style="top: 80px">
+                    <h3 class="text-center pb-3">Restablecer contraseña.</h3>
+                    <p>Escriba el correo con el que registro su cuenta para que le sea enviado un link de recuperación del mismo.</p>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Correo electronico" class="form-control">
+                    </div>
+                    <button class="btn btn-success btn-block" id="btn_blue" >
+                        Enviar correo.
+                    </button>
+                </form>
+            </section>
+            <section class="text-logind d-none d-lg-block d-xl-block">
+                <img src="/img/forgot.png" alt="Olvide sesión">
+            </section>
+        </div>
+    </section>
+{{/if}}

@@ -1,0 +1,62 @@
+﻿<section class="full-reset font-cover" style="background-image: url(/img/font-index8.jpg);height: 100vh;">
+        <div class="container p-4">
+            <div class="row pt-3 mb-3">
+                <section class="col-4 col-md-2">
+                    <section class="card" style="background-color: #FF7582; color:white;">
+                        <div class="card-body text-center">
+                            <p>Volver</p>
+                            <a class="link-btn" href="/docentes"><button class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                            </svg></button></a>
+                        </div>
+                    </section>
+                </section>
+                <section class="col-8">
+                    <section class="card card-titles">
+                                <div class="card-body px-4">
+                                    <h3 class="card-title" align="CENTER">Registro Docente.</h3>
+                                </div>
+                    </section>
+                </section>
+                <section class="col-2 d-none d-sm-block">
+                    <section class="card" style="background-color: #6F88FC; color:white;">
+                        <div class="card-body text-center">
+                            <script type="text/javascript">
+                                var d = new Date();
+                                document.write('Fecha:<br>'+d.getDate(),'/'+d.getMonth(),'/'+d.getFullYear(),'<br>Hora:<br>'+d.getHours(),':'+d.getMinutes());
+                            </script>
+                        </div>
+                    </section>
+                </section>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+                    <div class="card text-center" style="border: 0">
+                        <img src="/img/usuarioBTN.png" alt="Brand" class="card-img-top mx-auto m-2" style="padding: 10px; border-radius: 20px;height: 30vh;width: auto">
+                        <div class="card-body">
+                            <form action="/docentes/add" method="post">
+                                <div class="form-group">
+                                    <input type="text" name="fullname" placeholder="Nombre completo" class="form-control" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="username" placeholder="Nombre de usuario" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Correo electronico" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success btn-block" id="btn_blue">
+                                        Registro.
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

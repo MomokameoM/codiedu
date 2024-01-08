@@ -1,0 +1,149 @@
+﻿{{#if user.permisosAdmin}}
+    <!-- -------------------ADMIN----------------- -->
+<div class="container py-5">
+    <div class="row py-1">
+        <div class="col-12 col-md-12 p-1" style="text-align: center">
+            <div class="card " style="background-color: #FF7582; color:white;">
+                <h1 style="color: white"><b>Administrador</b></h1>
+            </div>
+        </div>
+        <div class="col-12 col-md-8 p-1">
+            <section class="card" style="background-color: #83B8FF; color:white;text-align: center">
+                <section class="card-body p-3" style="text-align: center">
+                    <h2><b>Novedades</b></h2>
+                    <ul>
+                        <li>Respuestas nuevas en las actividades de rimas de los docentes desde su ultimo acceso: {{rimasNum}}</li>
+                        <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                        <li>Respuestas nuevas en las actividades de oraciones de los docentes desde su ultimo acceso: {{oracionesNum}}</li>
+                        <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                        <li>Respuestas nuevas en las actividades de signos de los docentes  desde su ultimo acceso: {{signosNum}}</li>
+                        <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                        <li>Respuestas nuevas en las actividades de unir de los docentes  desde su ultimo acceso: {{unirNum}}</li>
+                        <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                        <li>Alumnos nuevos desde su ultimo acceso: {{alumnosNum}}</li>
+
+                    </ul>
+                </section>
+            </section>
+        </div>
+        <div class="col-12 col-md-4 p-1">
+            <div class="card text-center" style="background-color: #9A9CEA; color:white;">
+                <div class="card-body p-3" style="font-size: 2vh">
+                    <h2><b>Perfil</b></h2>
+                    <p><i>{{user.username}}</i></p>
+                    <img src="{{user.imagen}}" style="width: 100%">
+                    <p><b> {{user.fullname}} </b></p>
+                    <a href="/profile/edit/{{user.id}}" class="btn btn-secondary" id="btn_blue">Editar perfil.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+    <!-- -------------------DOCENTE----------------- -->
+    {{#if user.permisos}}
+        <div class="container py-5" style="text-align: center">
+            <div class="row py-1">
+                <div class="col-12 col-md-12 p-1">
+                    <div class="card " style="background-color: #FF7582; color:white;">
+                        <h1 style="color: white"><b>Docente</b></h1>
+                    </div>
+                </div>
+                <div class="col-12 col-md-8 p-1">
+                    <section class="card" style="background-color: #83B8FF; color:white;">
+                        <section class="card-body p-3" style="text-align: center">
+                            <h2><b>Novedades</b></h2>
+                            <ul>
+                                <li>Respuestas nuevas en sus actividades de rimas desde su ultimo acceso: {{rimasNum}}</li>
+                                <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                                <li>Respuestas nuevas en sus actividades de oraciones desde su ultimo acceso: {{oracionesNum}}</li>
+                                <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                                <li>Respuestas nuevas en sus actividades de signos desde su ultimo acceso: {{signosNum}}</li>
+                                <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                                <li>Respuestas nuevas en sus actividades de unir desde su ultimo acceso: {{unirNum}}</li>
+                                <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                                <li>Alumnos que se inscribieron a sus cursos desde su ultimo acceso: {{alumnosNum}}</li>
+
+                            </ul>
+                        </section>
+                    </section>
+                </div>
+                <div class="col-12 col-md-4 p-1">
+                    <div class="card text-center" style="background-color: #9A9CEA; color:white;">
+                        <div class="card-body p-3" style="font-size: 2vh">
+                            <h2><b>Perfil</b></h2>
+                            <p><i>{{user.username}}</i></p>
+                            <img src="{{user.imagen}}" style="width: 100%">
+                            <p><b> {{user.fullname}} </b></p>
+                            <a href="/profile/edit/{{user.id}}" class="btn btn-secondary" id="btn_blue">Editar perfil.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        
+        <!-- -------------------ESTUDIANTE----------------- -->
+    <div class="container py-5" style="text-align: center;">
+        <div class="row py-1">
+            <div class="col-12 col-md-12 p-1">
+                <div class="card " style="background-color: #FF7582; color:white;">
+                    <h1 style="color: white"><b>Estudiante</b></h1>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 p-1">
+                <section class="card" style="background-color: #83B8FF; color:white;">
+                    <section class="card-body p-3" style="font-size: 100%; text-align: center">
+                        <h2><b>Novedades</b></h2>
+                        <ul>
+                            {{#if newArrayEdu}}
+                                <li>El contenido de apoyo nuevo en tus cursos es: {{newArrayEdu}}</li>
+                            {{else}}
+                                <li>No hay contenido de apoyo nuevo</li>
+                            {{/if}}
+                            <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                            {{#if newArrayRimas}}
+                                <li>Hay nuevas actividades de rimas en los cursos: {{newArrayRimas}}</li>
+                            {{else}}
+                                <li>No hay actividades de rimas nuevas </li>
+                            {{/if}}
+                            <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                            {{#if newArrayOra}}
+                                <li>Hay nuevas actividades de oraciones en los cursos: {{newArrayOra}}</li>
+                            {{else}}
+                                <li>No hay actividades de oraciones nuevas </li>
+                            {{/if}}
+                            <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                            {{#if newArraySignos}}
+                                <li>Hay nuevas actividades de signos en los cursos: {{newArraySignos}}</li>
+                            {{else}}
+                                <li>No hay actividades de signos nuevas </li>
+                            {{/if}}
+                            <div style="width: 100%;border-width: 0.1vh;border-style: solid; margin-top: 0.3vh;margin-bottom: 0.3vh"></div>
+                            {{#if newArrayUnir}}
+                                <li>Hay nuevas actividades de unir en los cursos: {{newArrayUnir}}</li>
+                            {{else}}
+                                <li>No hay actividades de unir nuevas </li>
+                            {{/if}}
+                        </ul>
+                    </section>
+                </section>
+            </div>
+            <div class="col-12 col-md-4 p-1">
+                <div class="card text-center" style="background-color: #9A9CEA; color:white;">
+                    <div class="card-body p-3" style="font-size: 2vh">
+                        <h2><b>Perfil</b></h2>
+                        <p><i>{{user.username}}</i></p>
+                        <img src="{{user.imagen}}" style="width: 100%">
+                        <p><b> {{user.fullname}} </b></p>
+                        <a href="/profile/edit/{{user.id}}" class="btn btn-secondary" id="btn_blue">Editar perfil.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    {{/if}}
+{{/if}}
