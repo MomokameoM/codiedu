@@ -223,8 +223,10 @@ router.get('/nosotros',(req,res)=>{
 //logout
 router.get('/logout',isLoggedIn,async (req, res) => {
     await poolDB.query('UPDATE users SET lastaccess = current_timestamp where id = ?', [req.user.id]);
-    req.logOut();
-    res.redirect('/')
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+      });
 })
 
 
@@ -248,10 +250,10 @@ router.post('/send-email',isNotLoggedIn, async (req, res)=> {
             const existToken = await pooldb.query('SELECT u.id, u.email, t.user_id FROM users AS u INNER JOIN passToken AS t ON u.id = user_id WHERE u.id =?;',[forgotPassword[0].id]);
             if (existToken.length > 0) {
                 req.flash('message', 'Ya se envio un correo de recuperacion a ese correo.');
-            }else {
+            } else {
                     let token = helpers.randomToken(6);
                     console.log("EL TOKEN ES ", token);
-                    await pooldb.query("INSERT INTO passToken (token,expires, user_id) VALUES (?,NOW() + INTERVAL 10 MINUTE,?)",[token,forgotPassword[0].id]);
+                    await pooldb.query("INSERT INTO passToken (token,expires, user_id) VALUES (?,NOW() + INTERVAL 10 MINUTE,?)",[token,forgotPassword[0].id]);/* 
                     const transporter = nodemailer.createTransport({
                         host: "smtp.gmail.com",
                         port: 465,
@@ -273,8 +275,11 @@ router.post('/send-email',isNotLoggedIn, async (req, res)=> {
                         else
                             console.log("Enviado correctamente");
                     });
-                    req.flash('success', 'Correo enviado');
+                   
+                    
+               */     
             }
+            req.flash('success', 'Correo enviado');
         }
     }
     res.redirect('/forgot');
