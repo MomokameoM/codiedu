@@ -8,6 +8,7 @@ const {isLoggedIn} = require('../lib/auth');
 router.get('/:id',isLoggedIn, async (req, res) => {
     const {id} = req.params;
     const estudiantes = await pooldb.query('SELECT u.*,ca.*,c.* FROM cursosAlumnos AS ca INNER JOIN cursos AS c ON ca.cursos_id = c.id INNER JOIN users as u on u.id=ca.users_id where ca.cursos_id=?',[id]);
+    //const estudiantes = await pooldb.query('CALL GetDatosAlumnos(?)',[id]);
     console.log(estudiantes)
     res.render('estudiantes/list', { estudiantes,id });
 });
@@ -26,7 +27,7 @@ router.get('/eject/:id/:id2',isLoggedIn, async (req, res)=>{
     await pooldb.query('delete rr.* FROM respuestasO as rr INNER JOIN cursosOraciones as cr ON rr.fk_id_oraciones = cr.oraciones_id WHERE fk_id_usersE=? and cursos_id=?', [id,id2]);
     await pooldb.query('delete rr.* FROM respuestasU as rr INNER JOIN cursosUnir as cr ON rr.fk_id_unir = cr.unir_id WHERE fk_id_usersE=? and cursos_id=?', [id,id2]);
     await pooldb.query('delete rr.* FROM respuestasS as rr INNER JOIN cursosSignos as cr ON rr.fk_id_signos = cr.signos_id WHERE fk_id_usersE=? and cursos_id=?', [id,id2]);
-    await pooldb.query('delete from cursosAlumnos where users_id=? and cursos_id=?', [id,id2]);
+    //await pooldb.query('delete from cursosAlumnos where users_id=? and cursos_id=?', [id,id2]);
     req.flash('success', 'Estudiante expulsado correctamente');
     res.redirect('/estudiantes/'+id2);
 });

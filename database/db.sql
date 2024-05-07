@@ -2,6 +2,7 @@
 drop database if exists codyeduDB;
 CREATE  DATABASE codyeduDB;
 USE codyeduDB;
+
 -- users tab (Docentes)
 create  table users(
                        id int(11) not null ,
@@ -21,7 +22,7 @@ ALTER TABLE users ADD token varchar(10);
 ALTER TABLE users ADD permisosAdmin boolean not null;
 ALTER TABLE users MODIFY COLUMN imagen varchar(500) NOT NULL DEFAULT 'https://images7.alphacoders.com/116/thumb-1920-1168618.jpg';
 alter table users add lastaccess timestamp not null default current_timestamp;
--- update users set permisosAdmin=1 where id=22;
+-- update users set permisosAdmin=1 where id=3;
 -- select * from users;
 -- select lastaccess from users where id=21
 -- delete from users where id =30;
@@ -355,3 +356,41 @@ create table cursosUnir(
 -- select  cr.*,r.*,rr.* FROM cursosUnir AS cr INNER JOIN respuestasU AS rr ON rr.fk_id_unir = cr.unir_id INNER JOIN unir AS r ON r.id=rr.fk_id_unir where cursos_id=4;
 -- SELECT r.*, cr.* FROM unir AS r INNER JOIN cursosUnir AS cr ON r.id = cr.unir_id where cursos_id=4;
 
+/*/////////TEMP FIX////////////////////////////
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'murphy03';
+flush privileges;*/
+
+/*/////////////////////PROCEDIMIENTOS ALMACENADOS////////////////////////////////////////////*/
+
+drop procedure if exists DeleteRespuestasByUserAndCurso;
+
+DELIMITER //
+CREATE PROCEDURE BorrarEstudianteRimas(IN fk_id_usersE INT,IN cursosId INT)
+BEGIN
+    delete rr.* 
+    FROM respuestas as rr 
+    INNER JOIN cursosRimas as cr 
+    ON rr.fk_id_rimas = cr.rimas_id 
+    WHERE fk_id_usersE=cursos_id and cursos_id=cursosId;
+END //
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE DeleteRespuestasByUserAndCurso(IN fk_id_usersE INT, IN cursos_id INT)
+BEGIN
+    -- Eliminar respuestas relacionadas con cursosRimas
+    DELETE rr
+    FROM respuestas AS rr
+    INNER JOIN cursosRimas AS cr ON rr.fk_id_rimas = cr.rimas_id
+    WHERE cr.fk_id_usersE = 2 AND cr.cursos_id = 1;
+
+END //
+
+DELIMITER ;
+
+
+CALL DeleteRespuestasByUserAndCurso(2,1);
+
+  SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+  SET @row_num = 1;
